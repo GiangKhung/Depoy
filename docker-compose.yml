@@ -1,23 +1,6 @@
 version: "3.8"
 
 services:
-  # MongoDB Database
-  mongodb:
-    image: mongo:7.0
-    container_name: docshare-mongodb
-    restart: unless-stopped
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password123
-      MONGO_INITDB_DATABASE: docshare
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb_data:/data/db
-      - ./backend/scripts/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-    networks:
-      - docshare-network
-
   # Backend API
   backend:
     build:
@@ -28,7 +11,7 @@ services:
     environment:
       NODE_ENV: production
       PORT: 5000
-      MONGODB_URI: mongodb://admin:password123@mongodb:27017/docshare?authSource=admin
+      MONGODB_URI: mongodb+srv://hoanggiang2004tv:Giang15112004@docshare.wilx2hq.mongodb.net/docshare?retryWrites=true&w=majority
       JWT_SECRET: your-super-secret-jwt-key-change-in-production
       JWT_EXPIRE: 7d
       CORS_ORIGIN: http://localhost:3000
@@ -36,8 +19,6 @@ services:
       - "5000:5000"
     volumes:
       - backend_uploads:/app/uploads
-    depends_on:
-      - mongodb
     networks:
       - docshare-network
     healthcheck:
@@ -83,8 +64,6 @@ services:
       - docshare-network
 
 volumes:
-  mongodb_data:
-    driver: local
   backend_uploads:
     driver: local
 
