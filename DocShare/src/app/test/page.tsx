@@ -15,12 +15,15 @@ export default function TestPage() {
     try {
       // Test với document ID có sẵn
       const documentId = "68789765f3daacaa99445025";
-      const response = await fetch(`http://localhost:5000/api/documents/${documentId}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://graceful-balance-production-9b59.up.railway.app/api/documents/${documentId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       console.log("Response status:", response.status);
       console.log("Response headers:", response.headers);
@@ -59,10 +62,13 @@ export default function TestPage() {
         headers.Authorization = `Bearer ${token}`;
       }
 
-      const response = await fetch(`http://localhost:5000/api/documents/${documentId}`, {
-        method: "GET",
-        headers,
-      });
+      const response = await fetch(
+        `https://graceful-balance-production-9b59.up.railway.app/api/documents/${documentId}`,
+        {
+          method: "GET",
+          headers,
+        }
+      );
 
       console.log("Response status:", response.status);
       console.log("Response headers:", response.headers);
@@ -86,7 +92,7 @@ export default function TestPage() {
     <div className="min-h-screen bg-gray-900 text-white p-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-8">API Test Page</h1>
-        
+
         <div className="space-y-4 mb-8">
           <button
             onClick={testAPI}

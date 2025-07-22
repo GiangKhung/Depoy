@@ -24,7 +24,7 @@ EXPOSE 5000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:5000/api/health || exit 1
+  CMD curl -f https://graceful-balance-production-9b59.up.railway.app/api/health || exit 1
 
 # Start the application
 CMD ["npm", "start"]

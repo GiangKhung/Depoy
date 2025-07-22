@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # MongoDB Database for Development
@@ -54,7 +54,7 @@ services:
     environment:
       NODE_ENV: development
       NEXT_PUBLIC_BACKEND_URL: http://localhost:5000
-      NEXT_PUBLIC_API_URL: http://localhost:5000/api
+      NEXT_PUBLIC_API_URL: https://graceful-balance-production-9b59.up.railway.app/api
     ports:
       - "3000:3000"
     volumes:

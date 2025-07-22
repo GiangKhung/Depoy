@@ -4,10 +4,16 @@ import axios, { AxiosInstance, AxiosResponse, AxiosError } from "axios";
 const getApiUrl = () => {
   // Server-side: use internal Docker network
   if (typeof window === "undefined") {
-    return process.env.API_URL || "http://backend:5000/api";
+    return (
+      process.env.API_URL ||
+      "https://graceful-balance-production-9b59.up.railway.app/api"
+    );
   }
   // Client-side: use public URL
-  return process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+  return (
+    process.env.NEXT_PUBLIC_API_URL ||
+    "https://graceful-balance-production-9b59.up.railway.app/api"
+  );
 };
 
 // Create axios instance with base configuration
